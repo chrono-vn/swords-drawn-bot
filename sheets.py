@@ -15,7 +15,7 @@ def get_sheet():
 def log_commendation(type_, target_name, target_id, giver_name, giver_id, reason):
     sheet    = get_sheet()
     log_tab  = sheet.worksheet("log")
-    timestamp = datetime.now(timezone.utc).isoformat()
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     log_tab.append_row([
         timestamp, type_, target_name, str(target_id),
         giver_name, str(giver_id), reason
@@ -26,7 +26,7 @@ def update_members_tab(target_name, target_id, type_):
     members    = sheet.worksheet("members")
     all_rows   = members.get_all_records()
     target_id_str = str(target_id)
-    now        = datetime.now(timezone.utc).isoformat()
+    now        = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
     for i, row in enumerate(all_rows, start=2):  # row 1 is headers
         if str(row["discord_id"]) == target_id_str:

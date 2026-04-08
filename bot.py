@@ -96,7 +96,8 @@ async def commends(interaction: discord.Interaction, member: discord.Member):
         return
 
     await interaction.followup.send(
-        f"**{member.display_name}** — ⭐ {row['commend_count']} commend(s) ",
+        f"**{member.display_name}** — ⭐ {row['commend_count']} commend(s), "
+        f"❌ {row['demerit_count']} demerit(s)",
         ephemeral=True
     )
 
