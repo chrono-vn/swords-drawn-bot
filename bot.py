@@ -50,7 +50,7 @@ async def commend(interaction: discord.Interaction, member: discord.Member, reas
         ephemeral=True
     )
     await interaction.channel.send(
-        f"⭐ **{giver.display_name}** commended **{member.display_name}** — *{reason}*"
+        f"⭐ **{giver.display_name}** commended **{member.display_name}** - *{reason}*"
     )
 
 # ── /demerit ───────────────────────────────────────────────────────────────
@@ -96,7 +96,7 @@ async def commends(interaction: discord.Interaction, member: discord.Member):
         return
 
     await interaction.followup.send(
-        f"**{member.display_name}** — ⭐ {row['commend_count']} commend(s), "
+        f"**{member.display_name}** - ⭐ {row['commend_count']} commend(s), "
         f"❌ {row['demerit_count']} demerit(s)",
         ephemeral=True
     )
@@ -121,7 +121,7 @@ async def leaderboard(interaction: discord.Interaction):
     medals = ["🥇","🥈","🥉"]
     for i, row in enumerate(sorted_rows):
         prefix = medals[i] if i < 3 else f"`{i+1}.`"
-        lines.append(f"{prefix} **{row['display_name']}** — {row['commend_count']} commend(s)")
+        lines.append(f"{prefix} **{row['display_name']}** - {row['commend_count']} commend(s)")
 
     await interaction.followup.send("\n".join(lines))
 
