@@ -21,6 +21,10 @@ async def commend(interaction: discord.Interaction, member: discord.Member, reas
 
     giver = interaction.user
 
+    if not has_any_role(interaction.user, APPLICANT_ROLE_IDS):
+        await interaction.followup.send("You don't have permission to issue commends.", ephemeral=True)
+        return
+    
     if member.id == giver.id:
         await interaction.followup.send("You can't commend yourself.", ephemeral=True)
         return
