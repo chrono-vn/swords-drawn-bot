@@ -1,7 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
-from config import DISCORD_TOKEN, OFFICER_ROLE_IDS, CORE_MEMBER_ROLE_IDS
+from config import DISCORD_TOKEN, OFFICER_ROLE_IDS, CORE_MEMBER_ROLE_IDS, APPLICANT_ROLE_IDS
 from db import init_db, get_current_charges, deduct_charge, next_charge_message
 from sheets import log_commendation, update_members_tab
 
