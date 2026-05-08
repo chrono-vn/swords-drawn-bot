@@ -6,9 +6,8 @@ from config import CREDS_FILE, SHEET_ID
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 def get_sheet():
-    creds_json = os.getenv("CREDS_FILE")
-    info = json.loads(creds_json)
-    creds = Credentials.from_service_account_info(info, scopes=SCOPES)
+    creds_path = os.getenv("CREDS_FILE", "credentials.json")
+    creds = Credentials.from_service_account_file(creds_path, scopes=SCOPES)
     client = gspread.authorize(creds)
     return client.open_by_key(SHEET_ID)
 

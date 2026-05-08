@@ -5,8 +5,8 @@ load_dotenv()
 
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 SHEET_ID = os.getenv('SHEET_ID')
-CREDS_FILE = "credentials.json"
-DB_FILE = "cooldowns.db"
+CREDS_FILE = os.getenv('CREDS_FILE', 'credentials.json')
+DB_FILE = os.getenv('DB_FILE', 'cooldowns.db')
 MAX_CHARGES = 3
 
 APPLICANT_ROLE_IDS = [1212573432026505216]
