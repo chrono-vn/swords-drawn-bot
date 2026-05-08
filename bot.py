@@ -1,7 +1,7 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
-from config import DISCORD_TOKEN, OFFICER_ROLE_IDS, CORE_MEMBER_ROLE_IDS
+from config import DISCORD_TOKEN, OFFICER_ROLE_IDS, CORE_MEMBER_ROLE_IDS, APPLICANT_ROLE_IDS
 from db import init_db, get_current_charges, deduct_charge, next_charge_message
 from sheets import log_commendation, update_members_tab
 
@@ -21,6 +21,10 @@ async def commend(interaction: discord.Interaction, member: discord.Member, reas
 
     giver = interaction.user
 
+    if has_any_role(interaction.user, APPLICANT_ROLE_IDS):
+        await interaction.followup.send("You don't have permission to issue commends.", ephemeral=True)
+        return
+    
     if member.id == giver.id:
         await interaction.followup.send("You can't commend yourself.", ephemeral=True)
         return
